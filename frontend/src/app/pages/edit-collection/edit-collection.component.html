@@ -1,0 +1,10 @@
+<div class="main-container">
+    <div class="input-container">
+      <input #collectionTitleInput type="text" placeholder="Enter collection name...">
+      <br><br>
+      <div>
+        <button style="margin-right: 5px" (click)="updateCollection(collectionTitleInput.value)">Save</button>
+        <button [routerLink]="'/collections/' + (collectionId ? collectionId : '')">Cancel</button>
+      </div>
+    </div>
+  </div>

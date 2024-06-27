@@ -1,0 +1,16 @@
+<div class="main-container">
+  <div class="input-container">
+    <input #itemTitleInput type="text" placeholder="Enter item name...">
+    <br><br>
+    <select #itemRaritySelect>
+      <option value="1">Rare</option>
+      <option value="2">Uncommon</option>
+      <option value="3">Common</option>
+    </select>
+    <br><br>
+    <div>
+      <button style="margin-right: 5px" (click)="createItem(itemTitleInput.value, itemRaritySelect.value)">Save</button>
+      <button [routerLink]="'/collections/' + (collectionId ? collectionId : '')">Cancel</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="main-container">
+  <div class="main-view-container">
+    <div class="collections-container">
+      <h1 class="title ">
+        Collections
+      </h1>
+      <div class="collection-list-container">
+        <div class="collection-list-element" *ngFor="let collection of collections" [routerLink]="['/collections', collection.id]" routerLinkActive="is-active">
+          <div class="collection">
+            <p class="collection-title" style="margin-right: 90px">{{ collection.title }}</p>
+
+            <ng-container *ngIf="selectedCollectionId === collection.id">
+              <a [routerLink]="['/edit-collection', selectedCollectionId]" style="margin-right: 10px">
+                <img src="../../../assets/edit.svg">
+              </a>
+              <a (click)="onDeleteCollectionClick()">
+                <img src="../../../assets/trash.svg">
+              </a>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+
+      <button routerLink="/new-collection">Add new Collection</button>
+
+    </div>
+
+    <div style="background-color: black; width: 50px;"></div>
+
+    <div class="item-list-container">
+      <h1 class="title">
+        Items
+      </h1>
+
+      <div class="item" *ngFor="let item of items">
+        <div class="item-text">
+          <img class="checkmark" [src]="item.isCollected ? '../../../assets/checked-check-box.png' : '../../../assets/blank-check-box.png'" (click)="onItemClick(item)">
+          <img [src]="getRarityImage(item.rarity)" style="margin-left: 5px; margin-right: 5px">
+          <p>{{ item.title }}</p>
+        </div>
+        <div class="item-buttons">
+          <button class="button-item-edit" [routerLink]="['/collections', selectedCollectionId, 'edit-item', item.id]">
+            <div class="icon">
+              <img src="../../../assets/edit.svg">
+            </div>
+          </button>
+
+          <button class="button-item-delete is-danger" (click)="onDeleteItemClick(item.id)" style="margin-left: 10px;">
+            <div class="icon">
+              <img src="../../../assets/trash.svg">
+            </div>
+          </button>
+        </div>
+      </div>
+      <button *ngIf="!isCollectionIdNotSet()" routerLink="./new-item" style="margin-top: 10px">
+        <div>Add Item</div>
+      </button>
+    </div>
+
+  </div>
+  <div class="footer" (click)="logOut()">
+    <p>Log Out</p>
+  </div>
+</div>

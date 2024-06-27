@@ -1,0 +1,12 @@
+<div class="main-container">
+    <div class="input-container">
+
+      <input #collectionTitleInput type="text" placeholder="Enter list name...">
+      <br><br>
+      <div>
+        <button style="margin-right: 5px" (click)="createCollection(collectionTitleInput.value)">Save</button>
+        <button routerLink="/">Cancel</button>
+      </div>
+
+    </div>
+  </div>
